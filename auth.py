@@ -3,7 +3,7 @@ from keystoneauth1.identity import v3
 from keystoneauth1 import session
 from novaclient import client as nova
 from keystoneclient.v3 import client as keystone
-
+from cinderclient import client as cinder
 
 class AuthenticationAPI:
     def __init__(self):
@@ -34,3 +34,6 @@ class AuthenticationAPI:
 
     def nova_api(self, project_id):
         return nova.Client("2.1", session=self.project_scoped_session(project_id=project_id))
+
+    def cinder_api(self, project_id):
+        return cinder.Client("2",session=self.project_scoped_session(project_id=project_id))

@@ -13,3 +13,8 @@ nova = auth.nova_api(project_id='YOUR_PROJECT_ID')
 
 for server in nova.servers.list():
     print server.id, server.name
+
+cinder = auth.cinder_api(project_id='YOUR_PROJECT_ID')
+
+for volume in cinder.volumes.list():
+    print volume.id, volume.name
