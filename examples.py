@@ -2,26 +2,28 @@ from auth import AuthenticationAPI
 
 auth = AuthenticationAPI()
 
-# Example project service
+# Keystone service
 keystone = auth.keystone_api()
 
+# List projects
 for project in keystone.projects.list():
     print project.id, project.name
 
-# Example compute service
-nova = auth.nova_api()
+# List users
+for user in keystone.users.list():
+    print user.id, user.name
 
+# Compute service
+nova = auth.nova_api()
 for server in nova.servers.list():
     print server.id, server.name
 
-# Example block storage service
+# Block storage service
 cinder = auth.cinder_api()
-
 for volume in cinder.volumes.list():
     print volume.id, volume.name
 
-#Example glance service
+# Glance service
 glance = auth.glance_api()
-
 for image in glance.images.list():
     print image.id, image.name
