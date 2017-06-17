@@ -19,3 +19,9 @@ cinder = auth.cinder_api()
 
 for volume in cinder.volumes.list():
     print volume.id, volume.name
+
+#Example glance service
+glance = auth.glance_api()
+
+for image in glance.images.list():
+    print image.id, image.name
